@@ -1,6 +1,24 @@
 import os
 import json
 import asyncio
+import sys
+
+print("=== Starting application ===", flush=True)
+print(f"Python version: {sys.version}", flush=True)
+print(f"PORT env: {os.environ.get('PORT', 'not set')}", flush=True)
+
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+print("FastAPI imported successfully", flush=True)
+
+from playwright.async_api import async_playwright
+
+print("Playwright imported successfully", flush=True)
+import os
+import json
+import asyncio
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -158,4 +176,5 @@ async def scrape(req: ScrapeRequest):
 
 if __name__ == "__main__":
     import uvicorn
+
     uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
